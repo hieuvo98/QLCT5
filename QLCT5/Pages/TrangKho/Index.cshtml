@@ -1,0 +1,42 @@
+﻿@page
+@model QLCT5.Pages.TrangKho.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Danh sách kho lưu trữ</h1>
+
+<p>
+    <a asp-page="Create">Thêm mới kho</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Kho[0].TenKho)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Kho[0].DiaChi)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Kho) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenKho)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.IdKho">Sửa</a> |
+                <a asp-page="./Details" asp-route-id="@item.IdKho">Xem thông tin</a> |
+                <a asp-page="./Delete" asp-route-id="@item.IdKho">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

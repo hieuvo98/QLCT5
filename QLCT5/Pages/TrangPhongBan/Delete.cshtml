@@ -1,0 +1,27 @@
+﻿@page
+@model QLCT5.Pages.TrangPhongBan.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Xóa phòng ban</h1>
+
+<h3>Bạn có chắc chắn muốn xóa phòng ban này không</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PhongBan.TenPhongBan)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PhongBan.TenPhongBan)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="PhongBan.IdPhongBan" />
+        <input type="submit" value="Xóa" class="btn btn-danger" /> |
+        <a asp-page="./Index">Quay lại danh sách</a>
+    </form>
+</div>

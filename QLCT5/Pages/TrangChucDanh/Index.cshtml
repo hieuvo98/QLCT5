@@ -1,0 +1,36 @@
+﻿@page
+@model QLCT5.Pages.TrangChucDanh.IndexModel
+
+@{
+    ViewData["Title"] = "Chức danh";
+}
+
+<h1>Danh sách chức danh</h1>
+
+<p>
+    <a asp-page="Create">Thêm mới chức danh</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ChucDanh[0].TenChucDanh)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ChucDanh) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenChucDanh)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.IdChucDanh">Sửa</a> |
+                <a asp-page="./Details" asp-route-id="@item.IdChucDanh">Xem chi tiết</a> |
+                <a asp-page="./Delete" asp-route-id="@item.IdChucDanh">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

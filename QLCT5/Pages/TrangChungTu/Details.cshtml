@@ -1,0 +1,60 @@
+﻿@page
+@model QLCT5.Pages.TrangChungTu.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Thông tin chứng từ</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChungTu.TenChungTu)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChungTu.TenChungTu)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChungTu.MaChungTu)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChungTu.MaChungTu)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChungTu.NgayChungTu)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChungTu.NgayChungTu)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChungTu.SoLuong)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChungTu.SoLuong)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChungTu.IdDonViNavigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChungTu.IdDonViNavigation.TenDonVi)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChungTu.IdKepChungTuNavigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChungTu.IdKepChungTuNavigation.TenKepChungTu)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChungTu.IdKepChungTuNavigation.IdTuKeNavigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChungTu.IdKepChungTuNavigation.IdTuKeNavigation.TenTuKe)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.ChungTu.IdChungTu">Sửa</a> |
+    <a asp-page="./Index">Quay lại danh sách</a>
+</div>

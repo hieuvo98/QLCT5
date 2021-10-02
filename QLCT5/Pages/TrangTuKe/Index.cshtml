@@ -1,0 +1,42 @@
+﻿@page
+@model QLCT5.Pages.TrangTuKe.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Danh sách tủ kệ</h1>
+
+<p>
+    <a asp-page="Create">Thêm mới tủ/kệ</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TuKe[0].TenTuKe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TuKe[0].IdKhoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.TuKe) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenTuKe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdKhoNavigation.TenKho)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.IdTuKe">Sửa</a> |
+                <a asp-page="./Details" asp-route-id="@item.IdTuKe">Xem chi tiết</a> |
+                <a asp-page="./Delete" asp-route-id="@item.IdTuKe">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

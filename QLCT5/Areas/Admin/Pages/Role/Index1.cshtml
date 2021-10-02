@@ -1,0 +1,31 @@
+﻿@page "/admin/role"
+@model QLCT5.Areas.Admin.Pages.Role.Index1Model
+@{
+    ViewData["Title"] = "Danh sách các Role";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<partial name="_StatusMessage" model="@Model.StatusMessage " />
+
+<div class="mb-2">
+    <a class="btn btn-secondary" asp-page="./Create">Tạo mới role</a>
+    <a class="btn btn-secondary" asp-page="../User/Index1">Quản lý người dùng</a>
+</div>
+
+<table class="table">
+    <tr>
+        <th>Tên Role (vai trò)</th>
+        <th>Tác vụ</th>
+    </tr>
+    @foreach (var role in Model.roles)
+            {
+                <tr>
+                    <td>@role.Name</td>
+                    <td>
+                        <a class="btn btn-success btn-sm" asp-page="./Edit" asp-route-roleid="@role.Id">Cập nhật</a>
+                        <a class="btn btn-success btn-sm" asp-page="./Delete" asp-route-roleid="@role.Id">Xóa</a>
+                    </td>
+                </tr>
+            }
+</table>

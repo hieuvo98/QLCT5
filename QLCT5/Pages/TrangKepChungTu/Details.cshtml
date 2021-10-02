@@ -1,0 +1,132 @@
+﻿@page
+@model QLCT5.Pages.TrangKepChungTu.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Thông tin chi tiết kẹp chứng từ</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.KepChungTu.SoHopDong)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.KepChungTu.SoHopDong)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.KepChungTu.TenKepChungTu)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.KepChungTu.TenKepChungTu)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.KepChungTu.NamCt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.KepChungTu.NamCt)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.KepChungTu.ThangCt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.KepChungTu.ThangCt)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.KepChungTu.IdTuKeNavigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.KepChungTu.IdTuKeNavigation.TenTuKe)
+        </dd>
+        <dt class="col-sm-2">
+            Danh sách chứng từ trong kẹp này
+        </dt>
+        <dd class="col-sm-10">
+            <table class="table">
+                <tr>
+                    <th>Tên chứng từ</th>
+                    <th>Ngày chứng từ</th>
+                    <th>Số lượng</th>
+                    <th>Đơn vị</th>
+                </tr>
+                @foreach (var item in Model.KepChungTu.ChungTus)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenChungTu)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NgayChungTu)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SoLuong)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdDonViNavigation.TenDonVi)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.KepChungTu.IdKepChungTu">Sửa</a> |
+    <a asp-page="./Index">Quay lại danh sách</a>
+</div>
+<hr />
+
+
+@*<table class="table">
+    <h4>Danh sách chứng từ trong kẹp này</h4>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ChungTu[0].TenChungTu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChungTu[0].MaChungTu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChungTu[0].NgayChungTu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChungTu[0].SoLuong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChungTu[0].IdDonViNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ChungTu)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenChungTu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaChungTu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayChungTu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdDonViNavigation.TenDonVi)
+            </td>
+            <td>
+                <a asp-page="TrangChungTu/Edit" asp-route-id="@item.IdChungTu">Sửa</a> |
+                <a asp-page="TrangChungTu/Details" asp-route-id="@item.IdChungTu">Xem chi tiết</a> |
+                <a asp-page="TrangChungTu/Delete" asp-route-id="@item.IdChungTu">Xóa</a>
+            </td>
+        </tr>
+        }*@
+
+

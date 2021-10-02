@@ -1,0 +1,38 @@
+﻿@page
+@model QLCT5.Pages.TrangKho.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Thêm mới kho</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Kho.TenKho" class="control-label"></label>
+                <input asp-for="Kho.TenKho" class="form-control" />
+                <span asp-validation-for="Kho.TenKho" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Kho.DiaChi" class="control-label"></label>
+                <input asp-for="Kho.DiaChi" class="form-control" />
+                <span asp-validation-for="Kho.DiaChi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Lưu" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Quay lại danh sách</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

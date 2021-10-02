@@ -1,0 +1,33 @@
+﻿@page
+@model QLCT5.Pages.TrangTuKe.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Xóa</h1>
+
+<h3>Bạn có chắc chắn xóa tủ/kệ này?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TuKe.TenTuKe)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TuKe.TenTuKe)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TuKe.IdKhoNavigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TuKe.IdKhoNavigation.IdKho)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="TuKe.IdTuKe" />
+        <input type="submit" value="Xóa" class="btn btn-danger" /> |
+        <a asp-page="./Index">Quay lại danh sách</a>
+    </form>
+</div>

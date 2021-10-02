@@ -1,0 +1,66 @@
+﻿@page
+@model QLCT5.Pages.TrangChungTu.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Danh sách tập chứng từ</h1>
+
+<p>
+    <a asp-page="Create">Thêm mới</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ChungTu[0].TenChungTu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChungTu[0].MaChungTu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChungTu[0].NgayChungTu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChungTu[0].SoLuong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChungTu[0].IdDonViNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChungTu[0].IdKepChungTuNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ChungTu) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenChungTu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaChungTu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayChungTu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdDonViNavigation.TenDonVi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdKepChungTuNavigation.TenKepChungTu)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.IdChungTu">Sửa</a> |
+                <a asp-page="./Details" asp-route-id="@item.IdChungTu">Xem chi tiết</a> |
+                <a asp-page="./Delete" asp-route-id="@item.IdChungTu">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

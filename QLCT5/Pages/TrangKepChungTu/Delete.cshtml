@@ -1,0 +1,51 @@
+﻿@page
+@model QLCT5.Pages.TrangKepChungTu.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Xóa kẹp chứng từ</h1>
+
+<h3>Bạn có chắc chắn xóa kẹp chứng từ này không?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.KepChungTu.TenKepChungTu)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.KepChungTu.TenKepChungTu)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.KepChungTu.SoHopDong)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.KepChungTu.SoHopDong)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.KepChungTu.NamCt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.KepChungTu.NamCt)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.KepChungTu.ThangCt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.KepChungTu.ThangCt)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.KepChungTu.IdTuKeNavigation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.KepChungTu.IdTuKeNavigation.TenTuKe)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="KepChungTu.IdKepChungTu" />
+        <input type="submit" value="Xóa" class="btn btn-danger" /> |
+        <a asp-page="./Index">Quay lại danh sách</a>
+    </form>
+</div>

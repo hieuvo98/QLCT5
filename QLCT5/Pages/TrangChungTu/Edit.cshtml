@@ -1,0 +1,59 @@
+﻿@page
+@model QLCT5.Pages.TrangChungTu.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Chỉnh sửa thông tin chứng từ</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ChungTu.IdChungTu" />
+            <div class="form-group">
+                <label asp-for="ChungTu.TenChungTu" class="control-label"></label>
+                <input asp-for="ChungTu.TenChungTu" class="form-control" />
+                <span asp-validation-for="ChungTu.TenChungTu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChungTu.MaChungTu" class="control-label"></label>
+                <input asp-for="ChungTu.MaChungTu" class="form-control" />
+                <span asp-validation-for="ChungTu.MaChungTu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChungTu.NgayChungTu" class="control-label"></label>
+                <input asp-for="ChungTu.NgayChungTu" class="form-control" />
+                <span asp-validation-for="ChungTu.NgayChungTu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChungTu.SoLuong" class="control-label"></label>
+                <input asp-for="ChungTu.SoLuong" class="form-control" />
+                <span asp-validation-for="ChungTu.SoLuong" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChungTu.IdDonViNavigation.TenDonVi" class="control-label"></label>
+                <select asp-for="ChungTu.IdDonVi" class="form-control" asp-items="ViewBag.TenDonVi"></select>
+                <span asp-validation-for="ChungTu.IdDonVi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChungTu.IdKepChungTuNavigation.TenKepChungTu" class="control-label"></label>
+                <select asp-for="ChungTu.IdKepChungTu" class="form-control" asp-items="ViewBag.TenKepChungTu"></select>
+                <span asp-validation-for="ChungTu.IdKepChungTu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Lưu" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Quay lại danh sách</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

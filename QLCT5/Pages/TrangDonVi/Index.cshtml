@@ -1,0 +1,36 @@
+﻿@page
+@model QLCT5.Pages.TrangDonVi.IndexModel
+
+@{
+    ViewData["Title"] = "Đơn vị";
+}
+
+<h1>Danh sách đơn vị</h1>
+
+<p>
+    <a asp-page="Create">Thêm mới đơn vị</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DonVi[0].TenDonVi)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.DonVi)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenDonVi)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.IdDonVi">Sửa</a> |
+                    <a asp-page="./Details" asp-route-id="@item.IdDonVi">Chi tiết</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

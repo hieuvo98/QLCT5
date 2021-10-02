@@ -1,0 +1,60 @@
+﻿@page
+@model QLCT5.Pages.TrangKepChungTu.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Kẹp chứng từ</h1>
+
+<p>
+    <a asp-page="Create">Thêm mới kẹp chứng từ</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.KepChungTu[0].SoHopDong)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KepChungTu[0].TenKepChungTu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KepChungTu[0].NamCt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KepChungTu[0].ThangCt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KepChungTu[0].IdTuKeNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.KepChungTu) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoHopDong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenKepChungTu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NamCt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThangCt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTuKeNavigation.TenTuKe)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.IdKepChungTu">Sửa</a> |
+                <a asp-page="./Details" asp-route-id="@item.IdKepChungTu">Xem chi tiết</a> |
+                <a asp-page="./Delete" asp-route-id="@item.IdKepChungTu">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

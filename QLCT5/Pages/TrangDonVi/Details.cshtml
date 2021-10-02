@@ -1,0 +1,25 @@
+﻿@page
+@model QLCT5.Pages.TrangDonVi.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Chi tiết</h1>
+
+<div>
+    <h4>Đơn vị</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DonVi.TenDonVi)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DonVi.TenDonVi)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.DonVi.IdDonVi">Sửa</a> |
+    <a asp-page="./Index">Quay lại danh sách</a>
+</div>

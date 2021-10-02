@@ -1,0 +1,28 @@
+﻿@page
+@model QLCT5.Pages.TrangChucDanh.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Bạn có chắc chắn xóa chức danh này?</h3>
+<div>
+    <h4>ChucDanh</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChucDanh.TenChucDanh)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChucDanh.TenChucDanh)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="ChucDanh.IdChucDanh" />
+        <input type="submit" value="Xóa" class="btn btn-danger" /> |
+        <a asp-page="./Index">Quay lại danh sách</a>
+    </form>
+</div>

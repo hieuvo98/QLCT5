@@ -1,0 +1,36 @@
+﻿@page
+@model QLCT5.Pages.TrangPhongBan.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Danh sách phòng ban</h1>
+
+<p>
+    <a asp-page="Create">Thêm mới phòng ban</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PhongBan[0].TenPhongBan)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.PhongBan) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenPhongBan)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.IdPhongBan">Sửa</a> |
+                <a asp-page="./Details" asp-route-id="@item.IdPhongBan">Xem chi tiết</a> |
+                <a asp-page="./Delete" asp-route-id="@item.IdPhongBan">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

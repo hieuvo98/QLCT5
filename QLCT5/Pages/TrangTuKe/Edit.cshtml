@@ -1,0 +1,39 @@
+﻿@page
+@model QLCT5.Pages.TrangTuKe.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Chỉnh sửa thông tin tủ/kệ</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TuKe.IdTuKe" />
+            <div class="form-group">
+                <label asp-for="TuKe.TenTuKe" class="control-label"></label>
+                <input asp-for="TuKe.TenTuKe" class="form-control" />
+                <span asp-validation-for="TuKe.TenTuKe" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TuKe.IdKhoNavigation.TenKho" class="control-label"></label>
+                <select asp-for="TuKe.IdKho" class="form-control" asp-items="ViewBag.TenKho"></select>
+                <span asp-validation-for="TuKe.IdKho" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Lưu" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Quay lại danh sách</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

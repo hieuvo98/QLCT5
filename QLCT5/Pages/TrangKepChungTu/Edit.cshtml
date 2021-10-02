@@ -1,0 +1,54 @@
+﻿@page
+@model QLCT5.Pages.TrangKepChungTu.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Sửa thông tin kẹp chứng từ</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="KepChungTu.IdKepChungTu" />
+            <div class="form-group">
+                <label asp-for="KepChungTu.SoHopDong" class="control-label"></label>
+                <input asp-for="KepChungTu.SoHopDong" class="form-control" />
+                <span asp-validation-for="KepChungTu.SoHopDong" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KepChungTu.TenKepChungTu" class="control-label"></label>
+                <input asp-for="KepChungTu.TenKepChungTu" class="form-control" />
+                <span asp-validation-for="KepChungTu.TenKepChungTu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KepChungTu.NamCt" class="control-label"></label>
+                <input asp-for="KepChungTu.NamCt" class="form-control" />
+                <span asp-validation-for="KepChungTu.NamCt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KepChungTu.ThangCt" class="control-label"></label>
+                <input asp-for="KepChungTu.ThangCt" class="form-control" />
+                <span asp-validation-for="KepChungTu.ThangCt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KepChungTu.IdTuKeNavigation" class="control-label"></label>
+                <select asp-for="KepChungTu.IdTuKe" class="form-control" asp-items="ViewBag.TenTuKe"></select>
+                <span asp-validation-for="KepChungTu.IdTuKe" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Lưu" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Quay lại danh sách</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,56 @@
+﻿@page
+@model QLCT5.Pages.TrangChungTu.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Thêm mới tập chứng từ</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ChungTu.TenChungTu" class="control-label"></label>
+                <input asp-for="ChungTu.TenChungTu" class="form-control" />
+                <span asp-validation-for="ChungTu.TenChungTu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChungTu.MaChungTu" class="control-label"></label>
+                <input asp-for="ChungTu.MaChungTu" class="form-control" />
+                <span asp-validation-for="ChungTu.MaChungTu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChungTu.NgayChungTu" class="control-label"></label>
+                <input asp-for="ChungTu.NgayChungTu" class="form-control" />
+                <span asp-validation-for="ChungTu.NgayChungTu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChungTu.SoLuong" class="control-label"></label>
+                <input asp-for="ChungTu.SoLuong" class="form-control" />
+                <span asp-validation-for="ChungTu.SoLuong" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChungTu.IdDonViNavigation.TenDonVi" class="control-label"></label>
+                <select asp-for="ChungTu.IdDonVi" class="form-control" asp-items="ViewBag.TenDonVi"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChungTu.IdKepChungTuNavigation.TenKepChungTu" class="control-label"></label>
+                <select asp-for="ChungTu.IdKepChungTu" class="form-control" asp-items="ViewBag.TenKepChungTu"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

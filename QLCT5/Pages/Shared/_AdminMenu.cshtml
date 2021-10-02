@@ -1,0 +1,20 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService authorizationService
+
+@{
+    var resultAuthorize = await authorizationService.AuthorizeAsync(this.User, "ShowMenuAdmin");
+}
+
+@if (resultAuthorize.Succeeded)
+{
+    <li class="nav-item dropdown">
+        <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" data-toggle="dropdown">
+            ADMIN
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" asp-page="/Role/Index1" asp-area="Admin">Phân quyền</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" asp-page="/User/Index1" asp-area="Admin">Người dùng</a>
+        </div>
+    </li>
+}
