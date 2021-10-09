@@ -3,12 +3,14 @@
 
 @{
     ViewData["Title"] = "Index";
+    
 }
 
-<h1>Kẹp chứng từ</h1>
+
+<h1>Danh sách kẹp chứng từ</h1>
 
 <p>
-    <a asp-page="Create">Thêm mới kẹp chứng từ</a>
+    <a class="btn btn-success btn-sm" asp-page="Create">+ Thêm mới kẹp chứng từ</a>
 </p>
 <table class="table">
     <thead>
@@ -27,6 +29,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.KepChungTu[0].IdTuKeNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KepChungTu[0].IdTuKeNavigation.IdKhoNavigation.TenKho)
             </th>
             <th></th>
         </tr>
@@ -50,9 +55,12 @@
                 @Html.DisplayFor(modelItem => item.IdTuKeNavigation.TenTuKe)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.IdKepChungTu">Sửa</a> |
-                <a asp-page="./Details" asp-route-id="@item.IdKepChungTu">Xem chi tiết</a> |
-                <a asp-page="./Delete" asp-route-id="@item.IdKepChungTu">Xóa</a>
+                @Html.DisplayFor(modelItem => item.IdTuKeNavigation.IdKhoNavigation.TenKho)
+            </td>
+            <td>
+                <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.IdKepChungTu">Sửa</a> |
+                <a class="btn btn-warning btn-sm" asp-page="./Details" asp-route-id="@item.IdKepChungTu">Xem chi tiết</a> |
+                <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.IdKepChungTu">Xóa</a>
             </td>
         </tr>
 }

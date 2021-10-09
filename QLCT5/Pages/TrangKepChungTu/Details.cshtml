@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "/trangkepchungtu/details/{id:int}"
 @model QLCT5.Pages.TrangKepChungTu.DetailsModel
 
 @{
@@ -41,34 +41,10 @@
             @Html.DisplayFor(model => model.KepChungTu.IdTuKeNavigation.TenTuKe)
         </dd>
         <dt class="col-sm-2">
-            Danh sách chứng từ trong kẹp này
+            @Html.DisplayNameFor(model => model.KepChungTu.IdTuKeNavigation.IdKhoNavigation)
         </dt>
         <dd class="col-sm-10">
-            <table class="table">
-                <tr>
-                    <th>Tên chứng từ</th>
-                    <th>Ngày chứng từ</th>
-                    <th>Số lượng</th>
-                    <th>Đơn vị</th>
-                </tr>
-                @foreach (var item in Model.KepChungTu.ChungTus)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TenChungTu)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.NgayChungTu)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.SoLuong)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.IdDonViNavigation.TenDonVi)
-                        </td>
-                    </tr>
-                }
-            </table>
+            @Html.DisplayFor(model => model.KepChungTu.IdTuKeNavigation.IdKhoNavigation.TenKho)
         </dd>
     </dl>
 </div>
@@ -79,9 +55,11 @@
 </div>
 <hr />
 
-
-@*<table class="table">
-    <h4>Danh sách chứng từ trong kẹp này</h4>
+<h4>Danh sách tập chứng từ trong kẹp này</h4>
+<p>   
+    <a class="btn btn-success btn-sm" asp-page="AddChungTu" asp-route-id="@Model.KepChungTu.IdKepChungTu">+ Thêm mới tập chứng từ vào kẹp này </a>   
+</p>
+<table class="table">   
     <thead>
         <tr>
             <th>
@@ -103,7 +81,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.ChungTu)
+        @foreach (var item in Model.KepChungTu.ChungTus)
         {
         <tr>
             <td>
@@ -122,11 +100,14 @@
                 @Html.DisplayFor(modelItem => item.IdDonViNavigation.TenDonVi)
             </td>
             <td>
-                <a asp-page="TrangChungTu/Edit" asp-route-id="@item.IdChungTu">Sửa</a> |
-                <a asp-page="TrangChungTu/Details" asp-route-id="@item.IdChungTu">Xem chi tiết</a> |
-                <a asp-page="TrangChungTu/Delete" asp-route-id="@item.IdChungTu">Xóa</a>
+                <a class="btn btn-primary btn-sm" asp-page="/TrangChungTu/Edit" asp-route-id="@item.IdChungTu">Sửa</a> |
+                <a class="btn btn-warning btn-sm" asp-page="/TrangChungTu/Details" asp-route-id="@item.IdChungTu">Xem chi tiết</a> |
+                <a class="btn btn-danger btn-sm" asp-page="/TrangChungTu/Delete" asp-route-id="@item.IdChungTu">Xóa</a>
             </td>
         </tr>
-        }*@
+        }
+ 
+</table>
+        
 
 

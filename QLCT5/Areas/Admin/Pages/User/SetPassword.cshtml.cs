@@ -11,7 +11,7 @@ using QLCT5.Models;
 
 namespace QLCT5.Areas.Admin.Pages.User
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class SetPasswordModel : PageModel
     {
         private readonly UserManager<AppUser> _userManager;

@@ -39,12 +39,12 @@ namespace QLCT5
                     .AddEntityFrameworkStores<QLCTtest3Context>()
                     .AddDefaultTokenProviders();
             //// Đăng kí author
-            //services.ConfigureApplicationCookie(options =>
-            //{
-            //    options.LoginPath = "/login/";
-            //    options.LogoutPath = "/logout/";
-            //    options.AccessDeniedPath = "Identity/Account/AccessDenied";
-            //});
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/login/";
+                options.LogoutPath = "/logout/";
+                options.AccessDeniedPath = "/khongduoctruycap.html";
+            });
 
             // Truy cập IdentityOptions
             services.Configure<IdentityOptions>(options =>
@@ -68,12 +68,10 @@ namespace QLCT5
                 options.User.RequireUniqueEmail = false;  // Email là duy nhất
 
                 // Cấu hình đăng nhập.
-                options.SignIn.RequireConfirmedEmail = false;            // Cấu hình xác thực địa chỉ email (email phải tồn tại)
+                options.SignIn.RequireConfirmedEmail = false;           // Cấu hình xác thực địa chỉ email (email phải tồn tại)
                 options.SignIn.RequireConfirmedPhoneNumber = false;     // Xác thực số điện thoại
-
-
-
             });
+
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("ShowMenuAdmin", policy =>
@@ -81,6 +79,7 @@ namespace QLCT5
                     policy.RequireRole("Admin");
                 });
             });
+
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

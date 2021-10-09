@@ -7,8 +7,19 @@
 
 <h1>Danh sách nhân viên</h1>
 
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Tìm theo tên:
+            <input type="text" name="searchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Tìm" class="btn btn-primary" /> |
+            <a asp-page="./Index">Quay lại danh sách</a>
+        </p>
+    </div>
+</form>
+
 <p>
-    <a asp-page="Create">Thêm mới nhân viên</a>
+    <a class="btn btn-success btn-sm" asp-page="Create">+ Thêm mới nhân viên</a>
 </p>
 <table class="table">
     <thead>
@@ -23,44 +34,33 @@
                 @Html.DisplayNameFor(model => model.NhanVien[0].SoDt)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NhanVien[0].IdChucDanhNavigation)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.NhanVien[0].IdPhongBanNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NhanVien[0].IdDonViNavigation)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.NhanVien) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.HoTen)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SoDt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdChucDanhNavigation.TenChucDanh)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdPhongBanNavigation.TenPhongBan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdDonViNavigation.TenDonVi)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.IdNhanVien">Sửa</a> |
-                <a asp-page="./Details" asp-route-id="@item.IdNhanVien">Xem chi tiết</a> |
-                <a asp-page="./Delete" asp-route-id="@item.IdNhanVien">Xóa</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.NhanVien)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoDt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdPhongBanNavigation.TenPhongBan)
+                </td>
+                <td>
+                    <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.IdNhanVien">Sửa</a> 
+                    <a class="btn btn-warning btn-sm" asp-page="./Details" asp-route-id="@item.IdNhanVien">Xem chi tiết</a> 
+                    <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.IdNhanVien">Xóa</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

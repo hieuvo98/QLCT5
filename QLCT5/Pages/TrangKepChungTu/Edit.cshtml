@@ -30,12 +30,20 @@
             </div>
             <div class="form-group">
                 <label asp-for="KepChungTu.ThangCt" class="control-label"></label>
-                <input asp-for="KepChungTu.ThangCt" class="form-control" />
+                <select asp-for="KepChungTu.ThangCt" class="form-control" asp-items="ViewBag.ThangCT"></select>
                 <span asp-validation-for="KepChungTu.ThangCt" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="KepChungTu.IdTuKeNavigation" class="control-label"></label>
-                <select asp-for="KepChungTu.IdTuKe" class="form-control" asp-items="ViewBag.TenTuKe"></select>
+                <label asp-for="KepChungTu.IdTuKeNavigation.IdKhoNavigation" class="control-label"></label>
+                <select asp-for="KepChungTu.IdTuKeNavigation.IdKho" class="form-control"
+                        asp-items="ViewBag.TenKho">
+                    <option value="">-- Chọn khu --</option>
+                </select>
+                <span asp-validation-for="KepChungTu.IdTuKeNavigation.IdKho" class="text-danger" />
+            </div>
+            <div class="form-group">
+                <label asp-for="KepChungTu.IdTuKeNavigation.TenTuKe" class="control-label"></label>
+                <select asp-for="KepChungTu.IdTuKe" class="form-control"></select>
                 <span asp-validation-for="KepChungTu.IdTuKe" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -51,4 +59,18 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<script type="text/javascript">
+    $(function () {
+        $("select#KepChungTu_IdTuKeNavigation_IdKho").on("change", function () {
+            var IdKho = $(this).val();
+            $("select#KepChungTu_IdTuKe").empty();
+            $("select#KepChungTu_IdTuKe").append("<option value=''>--Chọn tủ/kệ--</option>");
+            $.getJSON(`?handler=KeLookup&idKho=${IdKho}`, function (data) {
+                $.each(data, function (i, item) {
+                    $("select#KepChungTu_IdTuKe").append(`<option value="${item.value}">${item.text}</option>`);
+                });
+            });
+        });
+    });
+</script>
 }

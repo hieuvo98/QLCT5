@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,6 +11,7 @@ using QLCT5.Models;
 
 namespace QLCT5.Pages.TrangTuKe
 {
+    [Authorize]
     public class EditModel : PageModel
     {
         private readonly QLCT5.Models.QLCTtest3Context _context;
@@ -36,7 +38,7 @@ namespace QLCT5.Pages.TrangTuKe
             {
                 return NotFound();
             }
-           ViewData["TenKho"] = new SelectList(_context.Khos, "IdKho", "TenKho");
+            ViewData["TenKho"] = new SelectList(_context.Khos, "IdKho", "TenKho");
             return Page();
         }
 

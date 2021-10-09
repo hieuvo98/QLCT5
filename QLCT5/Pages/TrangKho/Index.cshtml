@@ -8,7 +8,7 @@
 <h1>Danh sách kho lưu trữ</h1>
 
 <p>
-    <a asp-page="Create">Thêm mới kho</a>
+    <a class="btn btn-success btn-sm" asp-page="Create">+ Thêm mới kho</a>
 </p>
 <table class="table">
     <thead>
@@ -32,9 +32,9 @@
                 @Html.DisplayFor(modelItem => item.DiaChi)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.IdKho">Sửa</a> |
-                <a asp-page="./Details" asp-route-id="@item.IdKho">Xem thông tin</a> |
-                <a asp-page="./Delete" asp-route-id="@item.IdKho">Xóa</a>
+                <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.IdKho">Sửa</a> 
+                <a class="btn btn-warning btn-sm" asp-page="./Details" asp-route-id="@item.IdKho">Xem thông tin</a> 
+                <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.IdKho">Xóa</a>
             </td>
         </tr>
 }

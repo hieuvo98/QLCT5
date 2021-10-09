@@ -8,7 +8,7 @@
 <h1>Danh sách tập chứng từ</h1>
 
 <p>
-    <a asp-page="Create">Thêm mới</a>
+    <a class="btn btn-success btn-sm" asp-page="Create">+ Thêm mới tập chứng từ</a>
 </p>
 <table class="table">
     <thead>
@@ -35,32 +35,44 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.ChungTu) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TenChungTu)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaChungTu)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NgayChungTu)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SoLuong)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdDonViNavigation.TenDonVi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdKepChungTuNavigation.TenKepChungTu)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.IdChungTu">Sửa</a> |
-                <a asp-page="./Details" asp-route-id="@item.IdChungTu">Xem chi tiết</a> |
-                <a asp-page="./Delete" asp-route-id="@item.IdChungTu">Xóa</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.ChungTu)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenChungTu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaChungTu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayChungTu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoLuong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdDonViNavigation.TenDonVi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdKepChungTuNavigation.TenKepChungTu)
+                </td>
+                <td>
+                    <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.IdChungTu">Sửa</a> |
+                    <a class="btn btn-warning btn-sm" asp-page="./Details" asp-route-id="@item.IdChungTu">Xem chi tiết</a> |
+                    <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.IdChungTu">Xóa</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+@{
+    var pagingModel = new QLCT5.Helpers.PagingModel()
+    {
+        currentPage = Model.currentPage,
+        countPages = Model.countPages,
+        generateUrl = (int? p) => @Url.Page("/TrangChungTu/Index", new { p = p })
+    };
+}
+
+<partial name="_Paging" model="@pagingModel" />

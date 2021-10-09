@@ -14,7 +14,7 @@ namespace QLCT5.Models
         }
 
         public int IdKho { get; set; }
-        [Display(Name = "Kho lưu trữ")]
+        [Display(Name = "Khu lưu trữ")]
         public string TenKho { get; set; }
         [Display(Name = "Địa chỉ")]
         public string DiaChi { get; set; }

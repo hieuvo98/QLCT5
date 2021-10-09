@@ -21,6 +21,7 @@ namespace QLCT5.Models
         public string TenChungTu { get; set; }
         [Display(Name = "Ngày thêm")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? NgayChungTu { get; set; }
         public int? IdKepChungTu { get; set; }
         [Display(Name = "Số tập")]
