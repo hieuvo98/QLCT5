@@ -21,9 +21,12 @@ namespace QLCT5.Pages.TrangTuKe
         }
 
         public TuKe TuKe { get; set; }
-
+        //public Kho Kho { set; get; }
+        public int? TuKeID { get; set; }
+        public IEnumerable<TuKe> dstuke { get; set; }
         public async Task<IActionResult> OnGetAsync(int? id)
         {
+            dstuke = await _context.TuKes.ToListAsync();
             if (id == null)
             {
                 return NotFound();

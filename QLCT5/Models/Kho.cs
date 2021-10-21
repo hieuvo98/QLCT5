@@ -15,6 +15,7 @@ namespace QLCT5.Models
 
         public int IdKho { get; set; }
         [Display(Name = "Khu lưu trữ")]
+        [Required(ErrorMessage = "Phải nhập tên kho")]
         public string TenKho { get; set; }
         [Display(Name = "Địa chỉ")]
         public string DiaChi { get; set; }

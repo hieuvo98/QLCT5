@@ -11,6 +11,12 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.KepChungTu.IdKepChungTu)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.KepChungTu.IdKepChungTu)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.KepChungTu.SoHopDong)
         </dt>
         <dd class="col-sm-10">
@@ -38,7 +44,7 @@
             @Html.DisplayNameFor(model => model.KepChungTu.IdTuKeNavigation)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.KepChungTu.IdTuKeNavigation.TenTuKe)
+            <a asp-page="/TrangTuKe/Details" asp-route-id="@Model.KepChungTu.IdTuKe">@Html.DisplayFor(model => model.KepChungTu.IdTuKeNavigation.TenTuKe)</a>
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.KepChungTu.IdTuKeNavigation.IdKhoNavigation)

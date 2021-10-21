@@ -1,25 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
 namespace QLCT5.Models
 {
-    public partial class Muon
-    {
-        public Muon()
-        {
-            ChiTietMuons = new HashSet<ChiTietMuon>();
-        }
+    //public class Muon
+    //{
+    //    //[Key]
+    //    //[Display(Name = "Mã mượn")]
+    //    //public int MuonId { get; set; }
+    //    public int idd { get; set; }
+    //    public int MaNvCho { get; set; }
+    //    public int MaNvMuon { get; set; }
+    //    [Display(Name = "Thời điểm cho mượn")]
+    //    //[DataType(DataType.Date)]
+    //    [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+    //    public DateTime? NgayMuon { get; set; }
 
-        public int IdMuon { get; set; }
-        public int? IdNhanVienMuon { get; set; }
-        public int? IdNhanVienCho { get; set; }
-        public DateTime? NgayMuon { get; set; }
-        public string GhiChu { get; set; }
+    //    [Display(Name = "Ghi chú")]
+    //    public string GhiChu { get; set; }
+    //    [Display(Name = "Trạng thái")]
+    //    public string TrangThai { get; set; }
 
-        public virtual NhanVien IdNhanVienChoNavigation { get; set; }
-        public virtual NhanVien IdNhanVienMuonNavigation { get; set; }
-        public virtual ICollection<ChiTietMuon> ChiTietMuons { get; set; }
-    }
+    //    [ForeignKey("MaNvMuon")]
+    //    [Display(Name = "Nhân viên mượn")]
+    //    public virtual NhanVien NhanVienMuon { get; set; }
+    //    [ForeignKey("MaNvCho")]
+    //    [Display(Name = "Nhân viên cho")]
+    //    public virtual NhanVien NhanVienCho { get; set; }
+    //    public virtual ICollection<ChiTietMuon> ChiTietMuons { get; set; }
+    //    public virtual Tra Tra { get; set; }
+    //}
 }

@@ -23,20 +23,33 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.TuKe) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TenTuKe)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdKhoNavigation.TenKho)
-            </td>
-            <td>
-                <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.IdTuKe">Sửa</a> 
-                <a class="btn btn-warning btn-sm" asp-page="./Details" asp-route-id="@item.IdTuKe">Xem chi tiết</a> 
-                <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.IdTuKe">Xóa</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.TuKe)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenTuKe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdKhoNavigation.TenKho)
+                </td>
+                <td>
+                    <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.IdTuKe">Sửa</a>
+                    <a class="btn btn-warning btn-sm" asp-page="./Details" asp-route-id="@item.IdTuKe">Xem chi tiết</a>
+                    <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.IdTuKe">Xóa</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+@{
+    var pagingModel = new QLCT5.Helpers.PagingModel()
+    {
+        currentPage = Model.currentPage,
+        countPages = Model.countPages,
+        generateUrl = (int? p) => @Url.Page("/TrangTuKE/Index", new { p = p })
+    };
+}
+
+
+<partial name="_Paging" model="@pagingModel" />

@@ -39,8 +39,8 @@ namespace QLCT5.Pages.TrangChungTu
             {
                 return NotFound();
             }
-           ViewData["TenDonVi"] = new SelectList(_context.DonVis, "IdDonVi", "TenDonVi");
-           ViewData["TenKepChungTu"] = new SelectList(_context.KepChungTus, "IdKepChungTu", "TenKepChungTu");
+            ViewData["TenDonVi"] = new SelectList(_context.DonVis, "IdDonVi", "TenDonVi");
+            ViewData["TenKepChungTu"] = new SelectList(_context.KepChungTus, "IdKepChungTu", "TenKepChungTu");
             return Page();
         }
 
@@ -71,7 +71,10 @@ namespace QLCT5.Pages.TrangChungTu
                 }
             }
 
-            return RedirectToPage("./Index");
+            //return RedirectToPage("./Index");
+
+            var id = ChungTu.IdKepChungTu;
+            return Redirect($"~/trangkepchungtu/details/{id}");
         }
 
         private bool ChungTuExists(int id)

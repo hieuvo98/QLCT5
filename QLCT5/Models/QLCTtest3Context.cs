@@ -18,24 +18,25 @@ namespace QLCT5.Models
             : base(options)
         {
         }
-
-        public virtual DbSet<ChiTietMuon> ChiTietMuons { get; set; }
+        
         public virtual DbSet<ChucDanh> ChucDanhs { get; set; }
         public virtual DbSet<ChungTu> ChungTus { get; set; }
         public virtual DbSet<DonVi> DonVis { get; set; }
         public virtual DbSet<KepChungTu> KepChungTus { get; set; }
-        public virtual DbSet<Kho> Khos { get; set; }
-        public virtual DbSet<Muon> Muons { get; set; }
+        public virtual DbSet<Kho> Khos { get; set; }        
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<PhongBan> PhongBans { get; set; }
         public virtual DbSet<TuKe> TuKes { get; set; }
+        //public virtual DbSet<ChiTietMuon> ChiTietMuons { get; set; }
+        //public virtual DbSet<Muon> Muons { get; set; }
+        //public virtual DbSet<Tra> Tras { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-PQL87F9;Initial Catalog=QLCTtest3;Integrated Security=True");
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-PQL87F9;Initial Catalog=QLCTtest3;User ID=sa;Password=12345");
             }
         }
 
@@ -54,37 +55,7 @@ namespace QLCT5.Models
 
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
-            modelBuilder.Entity<ChiTietMuon>(entity =>
-            {
-                entity.HasKey(e => new { e.IdMuon, e.IdChungTu })
-                    .HasName("pk_ctm");
-
-                entity.ToTable("ChiTietMuon");
-
-                entity.Property(e => e.NgayTra).HasColumnType("date");
-
-                entity.HasOne(d => d.IdChungTuNavigation)
-                    .WithMany(p => p.ChiTietMuons)
-                    .HasForeignKey(d => d.IdChungTu)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk02_ctm");
-
-                entity.HasOne(d => d.IdMuonNavigation)
-                    .WithMany(p => p.ChiTietMuons)
-                    .HasForeignKey(d => d.IdMuon)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("fk01_ctm");
-
-                entity.HasOne(d => d.IdNhanVienNhanNavigation)
-                    .WithMany(p => p.ChiTietMuonIdNhanVienNhanNavigations)
-                    .HasForeignKey(d => d.IdNhanVienNhan)
-                    .HasConstraintName("fk04_ctm_nhanviennhan");
-
-                entity.HasOne(d => d.IdNhanVienTraNavigation)
-                    .WithMany(p => p.ChiTietMuonIdNhanVienTraNavigations)
-                    .HasForeignKey(d => d.IdNhanVienTra)
-                    .HasConstraintName("fk03_ctm_nhanvientra");
-            });
+            
 
             modelBuilder.Entity<ChucDanh>(entity =>
             {
@@ -161,29 +132,7 @@ namespace QLCT5.Models
                 entity.Property(e => e.DiaChi).HasMaxLength(30);
 
                 entity.Property(e => e.TenKho).HasMaxLength(30);
-            });
-
-            modelBuilder.Entity<Muon>(entity =>
-            {
-                entity.HasKey(e => e.IdMuon)
-                    .HasName("pk_muon");
-
-                entity.ToTable("Muon");
-
-                entity.Property(e => e.GhiChu).HasMaxLength(100);
-
-                entity.Property(e => e.NgayMuon).HasColumnType("date");
-
-                entity.HasOne(d => d.IdNhanVienChoNavigation)
-                    .WithMany(p => p.MuonIdNhanVienChoNavigations)
-                    .HasForeignKey(d => d.IdNhanVienCho)
-                    .HasConstraintName("fk02_muon");
-
-                entity.HasOne(d => d.IdNhanVienMuonNavigation)
-                    .WithMany(p => p.MuonIdNhanVienMuonNavigations)
-                    .HasForeignKey(d => d.IdNhanVienMuon)
-                    .HasConstraintName("fk01_muon");
-            });
+            });            
 
             modelBuilder.Entity<NhanVien>(entity =>
             {
@@ -244,7 +193,37 @@ namespace QLCT5.Models
                     .HasConstraintName("fk01_tk");
             });
 
+            //modelBuilder.Entity<ChiTietMuon>(entity =>
+            //{
+            //    entity.HasOne(p => p.Muon)
+            //          .WithMany(c => c.ChiTietMuons)        //Collect Navigator
+            //          .HasForeignKey("MuonId")
+            //          .OnDelete(DeleteBehavior.Cascade);
+            //});
 
+            //modelBuilder.Entity<Tra>(entity =>
+            //{
+            //    entity.HasKey(tr => tr.TraId);
+            //    entity.HasOne(d => d.Muon)
+            //          .WithOne(c => c.Tra)
+            //          .HasForeignKey<Tra>(c => c.TraId)
+            //          .OnDelete(DeleteBehavior.Cascade);
+            //    entity.HasOne(d => d.NhanVienTra)
+            //          .WithMany()
+            //          .OnDelete(DeleteBehavior.NoAction);
+            //    entity.HasOne(d => d.NhanVienNhan)
+            //          .WithMany()
+            //          .OnDelete(DeleteBehavior.NoAction);
+            //});
+            //modelBuilder.Entity<Muon>(entity =>
+            //{
+            //    entity.HasOne(d => d.NhanVienMuon)
+            //          .WithMany()
+            //          .OnDelete(DeleteBehavior.NoAction);
+            //    entity.HasOne(d => d.NhanVienCho)
+            //          .WithMany()
+            //          .OnDelete(DeleteBehavior.NoAction);
+            //});
 
         }
 

@@ -21,6 +21,8 @@ namespace QLCT5.Pages.TrangKho
         }
 
         public Kho Kho { get; set; }
+        public int TuKeId { get; set; }
+        public IList<TuKe> TuKe { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,6 +32,11 @@ namespace QLCT5.Pages.TrangKho
             }
 
             Kho = await _context.Khos.FirstOrDefaultAsync(m => m.IdKho == id);
+
+            _context.Entry(Kho)
+                    .Collection(k => k.TuKes)
+                    .Query()                    
+                    .Load();
 
             if (Kho == null)
             {

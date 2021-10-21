@@ -7,28 +7,26 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <style>
+        table, td, th {
+            border: 1px black;
+        }
         table {
-            font-family: arial, sans-serif;
             border-collapse: collapse;
             width: 100%;
         }
-
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-            border-color: #96D4D4;
-            border-style: solid;
-        }
-
-        th {
-            background-color: #1f4dc6;
-            color: white;
+        td {
             text-align: center;
+            vertical-align: middle;
+        }
+        tr {
+            background-color: #adbbb6;
+            text-align: center;
+            line-height: 15px;
+            color: black;
         }
     </style>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
     <header>
@@ -69,9 +67,9 @@
                                 Quản lý mượn trả
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/TrangMuon/Index">Mượn</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="">Mượn</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="nav-link text-dark" asp-area="" asp-page="/TrangChiTietMuon/Index">Chi tiết mượn</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="">Chi tiết mượn</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">

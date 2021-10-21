@@ -28,9 +28,10 @@ namespace QLCT5.Pages.TrangKepChungTu
         public SelectList dskho { set; get; }
         public IActionResult OnGet()
         {
-            var dsthang = new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
-            ViewData["ThangCT"] = new SelectList(dsthang);
             
+            var dsthang = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
+            ViewData["ThangCT"] = new SelectList(dsthang);
+
             ViewData["TenKho"] = new SelectList(_context.Khos, "IdKho", "TenKho");
 
             return Page();
@@ -72,7 +73,8 @@ namespace QLCT5.Pages.TrangKepChungTu
             {
                 _context.KepChungTus.Add(emptyKepCT);
                 await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
+                var id = emptyKepCT.IdKepChungTu;
+                return Redirect($"~/trangkepchungtu/details/{id}");
             }
 
             return Page();

@@ -39,22 +39,22 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ChungTu.IdDonViNavigation.TenDonVi)
-        </dd>
+        </dd>        
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ChungTu.IdKepChungTuNavigation)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ChungTu.IdKepChungTuNavigation.TenKepChungTu)
+            <a asp-page="/TrangKepChungTu/Details" asp-route-id="@Model.ChungTu.IdKepChungTu">@Html.DisplayFor(model => model.ChungTu.IdKepChungTuNavigation.TenKepChungTu)</a>
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ChungTu.IdKepChungTuNavigation.IdTuKeNavigation)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ChungTu.IdKepChungTuNavigation.IdTuKeNavigation.TenTuKe)
+            <a asp-page="/TrangTuKe/Details" asp-route-id="@Model.ChungTu.IdKepChungTuNavigation.IdTuKe">@Html.DisplayFor(model => model.ChungTu.IdKepChungTuNavigation.IdTuKeNavigation.TenTuKe)</a>
         </dd>
     </dl>
 </div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.ChungTu.IdChungTu">Sửa</a> |
-    <a asp-page="./Index">Quay lại danh sách</a>
+    <a asp-page="/TrangKepChungTu/Details" asp-route-id="@Model.ChungTu.IdKepChungTu">Quay lại danh sách</a>
 </div>

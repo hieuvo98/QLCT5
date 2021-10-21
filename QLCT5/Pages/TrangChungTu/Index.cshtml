@@ -10,6 +10,44 @@
 <p>
     <a class="btn btn-success btn-sm" asp-page="Create">+ Thêm mới tập chứng từ</a>
 </p>
+
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <div class="row">
+            <div class="col">
+                Loại CT:
+                <input type="text" class="form-control" asp-for="SearchString" />
+            </div>
+
+            <div class="col">
+                Chọn đơn vị:
+                <select asp-for="ChungTuOfDonVi" class="form-control" asp-items="ViewBag.TenDonVi">
+                    <option value="">--Tất cả đơn vị--</option>
+                </select>
+            </div>
+            <div class="col">
+                Nhập năm:<input type="text" class="form-control" asp-for="Nam" />
+            </div>
+            <div class="col">
+                Chọn tháng:
+                <select asp-for="Thang" class="form-control" asp-items="ViewBag.ThangCT">
+                    <option value="">--Tất cả tháng--</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                Mã CT:
+                <input type="text" class="form-control" asp-for="MaChungTu" />               
+            </div>
+            <div class="col m-4">
+                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+            </div>
+        </div>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -74,5 +112,6 @@
         generateUrl = (int? p) => @Url.Page("/TrangChungTu/Index", new { p = p })
     };
 }
+
 
 <partial name="_Paging" model="@pagingModel" />

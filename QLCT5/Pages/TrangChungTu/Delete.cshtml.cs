@@ -56,7 +56,8 @@ namespace QLCT5.Pages.TrangChungTu
                 await _context.SaveChangesAsync();
             }
 
-            return RedirectToPage("./Index");
+            var idkepchungtu = ChungTu.IdKepChungTu;
+            return Redirect($"~/trangkepchungtu/details/{idkepchungtu}");
         }
     }
 }

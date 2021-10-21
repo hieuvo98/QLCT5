@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = "Details";
+    Layout = "_SoDoKhoLayout";
 }
 
 <h1>Xem chi tiết</h1>
@@ -24,7 +25,287 @@
         </dd>
     </dl>
 </div>
+
+<h4>Sơ đồ kệ</h4>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.TuKe.IdTuKe">Sửa</a> |
-    <a asp-page="./Index">Quay lại danh sách</a>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            @for (int i = 1; i < 9; i++)
+            {
+                <tr>
+                    @for (int j = 1; j < 9; j++)
+                    {
+                        string selectedTK = "";
+
+                        @if (Model.TuKe.TenTuKe == $"Kệ 1.{j}.{i}")
+                        {
+                            selectedTK = "bg-danger";
+                        }
+                        <td class="@selectedTK">Kệ 1.@j.@i</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
+
+
+<table class="table table-sm table-bordered">
+    <tbody>
+        @for (int i = 1; i < 9; i++)
+        {
+            <tr>
+                @for (int j = 1; j < 9; j++)
+                {
+                    string selectedTK = "";
+
+                    @if (Model.TuKe.TenTuKe == $"Kệ 2.{j}.{i}")
+                    {
+                        selectedTK = "bg-danger";
+                    }
+                    <td class="@selectedTK">Kệ 2.@j.@i</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+<b class="alert-danger">LỐI VÀO</b>
+<table class="table table-sm table-bordered">
+    <tbody>
+        @for (int i = 1; i < 11; i++)
+        {
+            <tr>
+                @for (int j = 1; j < 9; j++)
+                {
+                    string selectedTK = "";
+
+                    @if (Model.TuKe.TenTuKe == $"Kệ 3.{j}.{i}")
+                    {
+                        selectedTK = "bg-danger";
+                    }
+                    <td class="@selectedTK">Kệ 3.@j.@i</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+<p> </p>
+<table class="table table-sm table-bordered">
+    <tbody>
+        @for (int i = 1; i < 11; i++)
+        {
+            <tr>
+                @for (int j = 1; j < 9; j++)
+                {
+                    string selectedTK = "";
+
+                    @if (Model.TuKe.TenTuKe == $"Kệ 4.{j}.{i}")
+                    {
+                        selectedTK = "bg-danger";
+                    }
+                    <td class="@selectedTK">Kệ 4.@j.@i</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+<h4>Sơ đồ tủ</h4>
+<table class="table table-sm table-bordered">
+    <tbody>
+        <tr>
+            <td rowspan=7 style="width:3%" align="center"></td>
+            <td style="width:10%">Tủ 1</td>
+            <td style="width:10%">Tủ 2</td>
+            <td style="width:10%">Tủ 3</td>
+            <td style="width:10%">Tủ 4</td>
+            <td style="width:10%">Tủ 5</td>
+            <td style="width:10%">Tủ 6</td>
+            <td style="width:10%">Tủ 7</td>
+            <td style="width:10%">Tủ 8</td>
+            <td style="width:10%">Tủ 9</td>
+            <td rowspan=7 style="width:5%" align="center">Tủ 10</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="table table-sm table-bordered">
+    <tbody>
+        <tr>
+            <td rowspan=3 style="width:3%" align="center">Tủ 11</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td rowspan=6 style="width:5%"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="width:5%"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="width:5%"></td>
+        </tr>
+        <tr>
+            <td rowspan=3 style="width:3%" align="center">Tủ 12</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="width:5%"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="width:5%"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="width:5%"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td style="width:10%">Tủ 13</td>
+            <td style="width:10%">Tủ 14</td>
+            <td style="width:10%">Tủ 15</td>
+            <td style="width:10%">Tủ 16</td>
+            <td style="width:10%">Tủ 17</td>
+            <td style="width:10%">Tủ 18</td>
+            <td style="width:10%">Tủ 19</td>
+            <td style="width:10%"></td>
+            <td style="width:10%"></td>
+            <td>Tủ 20</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td style="width:10%"></td>
+            <td style="width:10%"></td>
+            <td style="width:10%"></td>
+            <td style="width:10%"></td>
+            <td style="width:10%">Tủ 21</td>
+            <td style="width:10%"></td>
+            <td style="width:10%">Tủ 22</td>
+            <td style="width:10%">Tủ 23</td>
+            <td style="width:10%">Tủ 24</td>
+            <td>Tủ 28</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td style="width:10%"></td>
+            <td style="width:10%"></td>
+            <td style="width:10%"></td>
+            <td style="width:10%"></td>
+            <td style="width:10%"></td>
+            <td style="width:10%"></td>
+            <td style="width:10%">Tủ 25</td>
+            <td style="width:10%">Tủ 26</td>
+            <td style="width:10%">Tủ 27</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+

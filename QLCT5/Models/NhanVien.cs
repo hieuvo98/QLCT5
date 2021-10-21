@@ -6,15 +6,15 @@ using System.ComponentModel.DataAnnotations;
 
 namespace QLCT5.Models
 {
-    public partial class NhanVien
+    public class NhanVien
     {
-        public NhanVien()
-        {
-            ChiTietMuonIdNhanVienNhanNavigations = new HashSet<ChiTietMuon>();
-            ChiTietMuonIdNhanVienTraNavigations = new HashSet<ChiTietMuon>();
-            MuonIdNhanVienChoNavigations = new HashSet<Muon>();
-            MuonIdNhanVienMuonNavigations = new HashSet<Muon>();
-        }
+        //public NhanVien()
+        //{
+        //    ChiTietMuonIdNhanVienNhanNavigations = new HashSet<ChiTietMuon>();
+        //    ChiTietMuonIdNhanVienTraNavigations = new HashSet<ChiTietMuon>();
+        //    MuonIdNhanVienChoNavigations = new HashSet<Muon>();
+        //    MuonIdNhanVienMuonNavigations = new HashSet<Muon>();
+        //}
 
         public int IdNhanVien { get; set; }
         [Display(Name = "Họ tên")]
@@ -33,9 +33,9 @@ namespace QLCT5.Models
         public virtual DonVi IdDonViNavigation { get; set; }
         [Display(Name = "Phòng ban")]
         public virtual PhongBan IdPhongBanNavigation { get; set; }
-        public virtual ICollection<ChiTietMuon> ChiTietMuonIdNhanVienNhanNavigations { get; set; }
-        public virtual ICollection<ChiTietMuon> ChiTietMuonIdNhanVienTraNavigations { get; set; }
-        public virtual ICollection<Muon> MuonIdNhanVienChoNavigations { get; set; }
-        public virtual ICollection<Muon> MuonIdNhanVienMuonNavigations { get; set; }
+        //public virtual ICollection<ChiTietMuon> ChiTietMuonIdNhanVienNhanNavigations { get; set; }
+        //public virtual ICollection<ChiTietMuon> ChiTietMuonIdNhanVienTraNavigations { get; set; }
+        //public virtual ICollection<Muon> MuonIdNhanVienChoNavigations { get; set; }
+        //public virtual ICollection<Muon> MuonIdNhanVienMuonNavigations { get; set; }
     }
 }

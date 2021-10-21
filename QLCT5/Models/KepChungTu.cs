@@ -26,6 +26,9 @@ namespace QLCT5.Models
 
         [Display(Name = "Tủ/kệ")]
         public virtual TuKe IdTuKeNavigation { get; set; }
+        //public int IdNhanVien { get; set; }
+        //[Display(Name = "Nhân viên thực hiện")]
+        //public virtual NhanVien IdNhanVienNavigation { get; set; }
         public virtual ICollection<ChungTu> ChungTus { get; set; }
     }
 }

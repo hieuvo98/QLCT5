@@ -28,3 +28,39 @@
     <a asp-page="./Edit" asp-route-id="@Model.Kho.IdKho">Sửa</a> |
     <a asp-page="./Index">Quay lại danh sách</a>
 </div>
+
+<h4>Danh sách tủ/kệ trong kho</h4>
+@*<p>
+    <a class="btn btn-success btn-sm" asp-page="AddChungTu" asp-route-id="@Model.KepChungTu.IdKepChungTu">+ Thêm mới tập chứng từ vào kẹp này </a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TuKe[0].TenTuKe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TuKe[0].IdKhoNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Kho.TuKes)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenTuKe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdKhoNavigation.TenKho)
+                </td>
+                <td>
+                    <a class="btn btn-primary btn-sm" asp-page="/TrangTuKe/Edit" asp-route-id="@item.IdTuKe">Sửa</a> |
+                    <a class="btn btn-warning btn-sm" asp-page="/TrangTuKe/Details" asp-route-id="@item.IdTuKe">Xem chi tiết</a> |
+                    <a class="btn btn-danger btn-sm" asp-page="/TrangTuKe/Delete" asp-route-id="@item.IdTuKe">Xóa</a>
+                </td>
+            </tr>
+        }
+
+</table>
