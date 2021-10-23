@@ -15,6 +15,7 @@ namespace QLCT5.Models
 
         public int IdPhongBan { get; set; }
         [Display(Name = "Phòng ban")]
+        [Required(ErrorMessage = "Phải nhập {0}")]
         public string TenPhongBan { get; set; }
 
         public virtual ICollection<NhanVien> NhanViens { get; set; }

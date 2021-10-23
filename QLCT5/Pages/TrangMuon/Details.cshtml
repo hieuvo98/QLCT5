@@ -39,15 +39,17 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Muon.NhanVienMuon.HoTen)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Muon.TrangThai)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Muon.TrangThai)
-        </dd>
     </dl>
     @if (Model.Muon.TrangThai == "Đã trả")
     {
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Muon.TrangThai)
+            </dt>
+            <dd class="col-sm-10">
+                <mark class="bg bg-success">@Html.DisplayFor(model => model.Muon.TrangThai)</mark>
+            </dd>
+        </dl>
         <h4>Thông tin trả</h4>
         <dl class="row">
             <dt class="col-sm-2">
@@ -73,6 +75,14 @@
     }
     else
     {
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Muon.TrangThai)
+            </dt>
+            <dd class="col-sm-10">
+                <mark class="bg bg-danger">@Html.DisplayFor(model => model.Muon.TrangThai)</mark>
+            </dd>
+        </dl>
         <a class="btn btn-success btn-sm col-2" asp-page="/TrangTra/Create" asp-route-id="@Model.Muon.MuonId">Trả</a>
     }
 </div>
@@ -109,10 +119,10 @@
                     @Html.DisplayFor(modelItem => item.ChungTu.IdChungTu)
                 </td>
                 <td>
-                    <a asp-page="/TrangChungTu/Details" asp-route-id="@item.ChungTu.IdChungTu">@Html.DisplayFor(modelItem => item.ChungTu.TenChungTu)</a>                   
+                    <a asp-page="/TrangChungTu/Details" asp-route-id="@item.ChungTu.IdChungTu">@Html.DisplayFor(modelItem => item.ChungTu.TenChungTu)</a>
                 </td>
                 <td>
-                    <a asp-page="/TrangKepChungTu/Details" asp-route-id="@item.ChungTu.IdKepChungTu">@Html.DisplayFor(modelItem => item.ChungTu.IdKepChungTuNavigation.TenKepChungTu)</a>                    
+                    <a asp-page="/TrangKepChungTu/Details" asp-route-id="@item.ChungTu.IdKepChungTu">@Html.DisplayFor(modelItem => item.ChungTu.IdKepChungTuNavigation.TenKepChungTu)</a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.SoLuong)

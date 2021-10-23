@@ -17,11 +17,14 @@ namespace QLCT5.Models
         [Display(Name = "Số hợp đồng")]
         public string SoHopDong { get; set; }
         [Display(Name = "Tên kẹp")]
+        [Required(ErrorMessage = "Phải nhập {0}")]
         public string TenKepChungTu { get; set; }
         [Display(Name = "Năm")]
+        [Required(ErrorMessage = "Phải nhập {0}")]
         public int? NamCt { get; set; }
         [Display(Name = "Tháng")]
         public int? ThangCt { get; set; }
+        [Required(ErrorMessage = "Phải chọn tủ kệ")]
         public int? IdTuKe { get; set; }
 
         [Display(Name = "Tủ/kệ")]

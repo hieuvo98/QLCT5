@@ -16,8 +16,9 @@ namespace QLCT5.Models
         public int IdChungTu { get; set; }
         [Display(Name = "Mã chứng từ")]
         public string MaChungTu { get; set; }
+        [Required(ErrorMessage = "Phải chọn đơn vị")]
         public int? IdDonVi { get; set; }
-        [Display(Name = "Loại chứng từ")]
+        [Display(Name = "Tên chứng từ")]
         public string TenChungTu { get; set; }
         [Display(Name = "Ngày thêm")]
         [DataType(DataType.Date)]

@@ -30,7 +30,8 @@ namespace testmuontra.Pages.TrangMuon
         public InputModel Input { get; set; }
         public class InputModel
         {
-            [Display(Name = "Chứng từ")]
+            [Display(Name = "ID Chứng từ")]
+            [Required(ErrorMessage = "Phải nhập {0}")]
             public int ChungTuId { set; get; }
             //public virtual ChungTu ChungTu { get; set; }
             [Display(Name = "Số lượng mượn")]

@@ -42,7 +42,8 @@ namespace QLCT5.Pages.TrangKepChungTu
         {
             [Display(Name = "Mã chứng từ")]
             public string MaChungTu { get; set; }
-            [Display(Name = "Loại chứng từ")]
+            [Display(Name = "Tên chứng từ")]
+            [Required(ErrorMessage = "Phải nhập {0}")]
             public string TenChungTu { get; set; }
             [Display(Name = "Ngày thêm")]
             [DataType(DataType.Date)]
@@ -51,6 +52,7 @@ namespace QLCT5.Pages.TrangKepChungTu
             public int? SoLuong { get; set; }
 
             [Display(Name = "Đơn vị")]
+            [Required(ErrorMessage = "Phải Chọn {0}")]
             public virtual DonVi IdDonViNavigation { get; set; }
         }
 

@@ -16,6 +16,7 @@ namespace QLCT5.Models
 
         public int IdDonVi { get; set; }
         [Display(Name = "Đơn vị")]
+        [Required(ErrorMessage = "Phải nhập {0}")]
         public string TenDonVi { get; set; }
 
         public virtual ICollection<ChungTu> ChungTus { get; set; }

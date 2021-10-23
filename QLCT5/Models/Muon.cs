@@ -12,7 +12,9 @@ namespace QLCT5.Models
         [Key]
         [Display(Name = "Mã mượn")]
         public int MuonId { get; set; }
+        [Required(ErrorMessage = "Phải chọn nhân viên cho")]
         public int MaNvCho { get; set; }
+        [Required(ErrorMessage = "Phải chọn nhân viên mượn")]
         public int MaNvMuon { get; set; }
         [Display(Name = "Ngày cho mượn")]
         //[DataType(DataType.Date)]
