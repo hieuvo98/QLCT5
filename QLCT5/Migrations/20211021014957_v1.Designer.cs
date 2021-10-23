@@ -10,8 +10,8 @@ using QLCT5.Models;
 namespace QLCT5.Migrations
 {
     [DbContext(typeof(QLCTtest3Context))]
-    [Migration("20211021011938_v3_addmuontra1")]
-    partial class v3_addmuontra1
+    [Migration("20211021014957_v1")]
+    partial class v1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -218,6 +218,31 @@ namespace QLCT5.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("QLCT5.Models.ChiTietMuon", b =>
+                {
+                    b.Property<int>("ChiTietMuonId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("IdChungTu")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MuonId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SoLuong")
+                        .HasColumnType("int");
+
+                    b.HasKey("ChiTietMuonId");
+
+                    b.HasIndex("IdChungTu");
+
+                    b.HasIndex("MuonId");
+
+                    b.ToTable("ChiTietMuons");
+                });
+
             modelBuilder.Entity("QLCT5.Models.ChucDanh", b =>
                 {
                     b.Property<int>("IdChucDanh")
@@ -346,6 +371,37 @@ namespace QLCT5.Migrations
                     b.ToTable("Kho");
                 });
 
+            modelBuilder.Entity("QLCT5.Models.Muon", b =>
+                {
+                    b.Property<int>("MuonId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("GhiChu")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MaNvCho")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MaNvMuon")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("NgayMuon")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("TrangThai")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MuonId");
+
+                    b.HasIndex("MaNvCho");
+
+                    b.HasIndex("MaNvMuon");
+
+                    b.ToTable("Muons");
+                });
+
             modelBuilder.Entity("QLCT5.Models.NhanVien", b =>
                 {
                     b.Property<int>("IdNhanVien")
@@ -404,6 +460,29 @@ namespace QLCT5.Migrations
                         .HasName("pk_pb");
 
                     b.ToTable("PhongBan");
+                });
+
+            modelBuilder.Entity("QLCT5.Models.Tra", b =>
+                {
+                    b.Property<int>("TraId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MaNvNhan")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MaNvTra")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("NgayTra")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("TraId");
+
+                    b.HasIndex("MaNvNhan");
+
+                    b.HasIndex("MaNvTra");
+
+                    b.ToTable("Tras");
                 });
 
             modelBuilder.Entity("QLCT5.Models.TuKe", b =>
@@ -479,6 +558,25 @@ namespace QLCT5.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("QLCT5.Models.ChiTietMuon", b =>
+                {
+                    b.HasOne("QLCT5.Models.ChungTu", "ChungTu")
+                        .WithMany()
+                        .HasForeignKey("IdChungTu")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("QLCT5.Models.Muon", "Muon")
+                        .WithMany("ChiTietMuons")
+                        .HasForeignKey("MuonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ChungTu");
+
+                    b.Navigation("Muon");
+                });
+
             modelBuilder.Entity("QLCT5.Models.ChungTu", b =>
                 {
                     b.HasOne("QLCT5.Models.DonVi", "IdDonViNavigation")
@@ -506,6 +604,25 @@ namespace QLCT5.Migrations
                     b.Navigation("IdTuKeNavigation");
                 });
 
+            modelBuilder.Entity("QLCT5.Models.Muon", b =>
+                {
+                    b.HasOne("QLCT5.Models.NhanVien", "NhanVienCho")
+                        .WithMany()
+                        .HasForeignKey("MaNvCho")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("QLCT5.Models.NhanVien", "NhanVienMuon")
+                        .WithMany()
+                        .HasForeignKey("MaNvMuon")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("NhanVienCho");
+
+                    b.Navigation("NhanVienMuon");
+                });
+
             modelBuilder.Entity("QLCT5.Models.NhanVien", b =>
                 {
                     b.HasOne("QLCT5.Models.ChucDanh", "IdChucDanhNavigation")
@@ -528,6 +645,33 @@ namespace QLCT5.Migrations
                     b.Navigation("IdDonViNavigation");
 
                     b.Navigation("IdPhongBanNavigation");
+                });
+
+            modelBuilder.Entity("QLCT5.Models.Tra", b =>
+                {
+                    b.HasOne("QLCT5.Models.NhanVien", "NhanVienNhan")
+                        .WithMany()
+                        .HasForeignKey("MaNvNhan")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("QLCT5.Models.NhanVien", "NhanVienTra")
+                        .WithMany()
+                        .HasForeignKey("MaNvTra")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("QLCT5.Models.Muon", "Muon")
+                        .WithOne("Tra")
+                        .HasForeignKey("QLCT5.Models.Tra", "TraId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Muon");
+
+                    b.Navigation("NhanVienNhan");
+
+                    b.Navigation("NhanVienTra");
                 });
 
             modelBuilder.Entity("QLCT5.Models.TuKe", b =>
@@ -560,6 +704,13 @@ namespace QLCT5.Migrations
             modelBuilder.Entity("QLCT5.Models.Kho", b =>
                 {
                     b.Navigation("TuKes");
+                });
+
+            modelBuilder.Entity("QLCT5.Models.Muon", b =>
+                {
+                    b.Navigation("ChiTietMuons");
+
+                    b.Navigation("Tra");
                 });
 
             modelBuilder.Entity("QLCT5.Models.PhongBan", b =>

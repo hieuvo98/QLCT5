@@ -1,0 +1,107 @@
+﻿@page
+@model QLCT5.Pages.TrangMuon.IndexModel
+
+@{
+    ViewData["Title"] = "Mượn";
+}
+
+<h1>Danh sách mượn</h1>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <div class="row">
+            <div class="col">
+                Trạng Thái:
+                <select asp-for="TrangThaiMuonTra" class="form-control" asp-items="ViewBag.TrangThai">
+                    <option value="">--Tất cả trạng thái-</option>
+                </select>
+            </div>
+            <div class="col">
+                Nhân viên mượn:
+                <select asp-for="IdNhanVienMuon" class="form-control" asp-items="ViewBag.TenNhanVienMuon">
+                    <option value="">--Tất cả-</option>
+                </select>
+            </div>
+            <div class="col">
+                Nhân viên cho:
+                <select asp-for="IdNhanVienCho" class="form-control" asp-items="ViewBag.TenNhanVienCho">
+                    <option value="">--Tất cả--</option>
+                </select>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+            </div>
+        </div>
+    </div>
+</form>
+<hr />
+@*<p>
+        <a class="btn btn-success btn-sm" asp-page="Create">+ Tạo yêu cầu mượn</a>
+    </p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Muon[0].MuonId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Muon[0].NgayMuon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Muon[0].GhiChu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Muon[0].TrangThai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Muon[0].NhanVienCho)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Muon[0].NhanVienMuon)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Muon)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MuonId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayMuon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GhiChu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrangThai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NhanVienCho.HoTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NhanVienMuon.HoTen)
+                </td>
+                <td>
+                    <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.MuonId">Sửa</a>
+                    <a class="btn btn-warning btn-sm" asp-page="./Details" asp-route-id="@item.MuonId">Chi tiết</a>
+                    <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.MuonId">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    var pagingModel = new QLCT5.Helpers.PagingModel()
+    {
+        currentPage = Model.currentPage,
+        countPages = Model.countPages,
+        generateUrl = (int? p) => @Url.Page("/TrangMuon/Index", new { p = p })
+    };
+}
+
+
+<partial name="_Paging" model="@pagingModel" />

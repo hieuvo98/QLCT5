@@ -1,0 +1,46 @@
+﻿@page
+@model QLCT5.Pages.TrangTra.DeleteModel
+
+@{
+    ViewData["Title"] = "Hoàn tác";
+}
+
+<h1>Hoàn tác</h1>
+
+<h3>Bạn có chắc chắn hoàn tác (xóa lần trả này)?</h3>
+<div>
+    <h4>Tra</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tra.NgayTra)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tra.NgayTra)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tra.NhanVienTra)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tra.NhanVienTra.HoTen)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tra.NhanVienNhan)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tra.NhanVienNhan.HoTen)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tra.Muon)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tra.Muon.MuonId)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Tra.TraId" />
+        <input type="submit" value="Hoàn tác" class="btn btn-danger" /> |
+        <a asp-page="/TrangMuon/Details" asp-route-id="@Model.Tra.TraId">Quay lại</a>
+    </form>
+</div>

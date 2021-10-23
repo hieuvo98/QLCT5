@@ -27,9 +27,9 @@ namespace QLCT5.Models
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<PhongBan> PhongBans { get; set; }
         public virtual DbSet<TuKe> TuKes { get; set; }
-        //public virtual DbSet<ChiTietMuon> ChiTietMuons { get; set; }
-        //public virtual DbSet<Muon> Muons { get; set; }
-        //public virtual DbSet<Tra> Tras { get; set; }
+        public virtual DbSet<ChiTietMuon> ChiTietMuons { get; set; }
+        public virtual DbSet<Muon> Muons { get; set; }
+        public virtual DbSet<Tra> Tras { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -193,37 +193,37 @@ namespace QLCT5.Models
                     .HasConstraintName("fk01_tk");
             });
 
-            //modelBuilder.Entity<ChiTietMuon>(entity =>
-            //{
-            //    entity.HasOne(p => p.Muon)
-            //          .WithMany(c => c.ChiTietMuons)        //Collect Navigator
-            //          .HasForeignKey("MuonId")
-            //          .OnDelete(DeleteBehavior.Cascade);
-            //});
+            modelBuilder.Entity<ChiTietMuon>(entity =>
+            {
+                entity.HasOne(p => p.Muon)
+                      .WithMany(c => c.ChiTietMuons)        //Collect Navigator
+                      .HasForeignKey("MuonId")
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
 
-            //modelBuilder.Entity<Tra>(entity =>
-            //{
-            //    entity.HasKey(tr => tr.TraId);
-            //    entity.HasOne(d => d.Muon)
-            //          .WithOne(c => c.Tra)
-            //          .HasForeignKey<Tra>(c => c.TraId)
-            //          .OnDelete(DeleteBehavior.Cascade);
-            //    entity.HasOne(d => d.NhanVienTra)
-            //          .WithMany()
-            //          .OnDelete(DeleteBehavior.NoAction);
-            //    entity.HasOne(d => d.NhanVienNhan)
-            //          .WithMany()
-            //          .OnDelete(DeleteBehavior.NoAction);
-            //});
-            //modelBuilder.Entity<Muon>(entity =>
-            //{
-            //    entity.HasOne(d => d.NhanVienMuon)
-            //          .WithMany()
-            //          .OnDelete(DeleteBehavior.NoAction);
-            //    entity.HasOne(d => d.NhanVienCho)
-            //          .WithMany()
-            //          .OnDelete(DeleteBehavior.NoAction);
-            //});
+            modelBuilder.Entity<Tra>(entity =>
+            {
+                entity.HasKey(tr => tr.TraId);
+                entity.HasOne(d => d.Muon)
+                      .WithOne(c => c.Tra)
+                      .HasForeignKey<Tra>(c => c.TraId)
+                      .OnDelete(DeleteBehavior.Cascade);
+                entity.HasOne(d => d.NhanVienTra)
+                      .WithMany()
+                      .OnDelete(DeleteBehavior.NoAction);
+                entity.HasOne(d => d.NhanVienNhan)
+                      .WithMany()
+                      .OnDelete(DeleteBehavior.NoAction);
+            });
+            modelBuilder.Entity<Muon>(entity =>
+            {
+                entity.HasOne(d => d.NhanVienMuon)
+                      .WithMany()
+                      .OnDelete(DeleteBehavior.NoAction);
+                entity.HasOne(d => d.NhanVienCho)
+                      .WithMany()
+                      .OnDelete(DeleteBehavior.NoAction);
+            });
 
         }
 

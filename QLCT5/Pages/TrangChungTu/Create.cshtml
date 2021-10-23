@@ -2,10 +2,10 @@
 @model QLCT5.Pages.TrangChungTu.CreateModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Tạo mới tập CT";
 }
 
-<h1>Thêm mới tập chứng từ</h1>
+<h1>Tạo mới tập chứng từ</h1>
 
 <hr />
 <div class="row">
@@ -41,14 +41,14 @@
                 <select asp-for="ChungTu.IdKepChungTu" class="form-control" asp-items="ViewBag.TenKepChungTu"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Thêm" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="Index">Quay lại danh sách</a>
 </div>
 
 @section Scripts {

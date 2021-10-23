@@ -3,21 +3,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace QLCT5.Migrations
 {
-    public partial class v3_addmuontra1 : Migration
+    public partial class v0 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropTable(
-                name: "ChiTietMuons");
-
-            migrationBuilder.DropTable(
-                name: "Tras");
-
-            migrationBuilder.DropTable(
-                name: "Muons");
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
                 name: "Muons",
@@ -25,10 +13,11 @@ namespace QLCT5.Migrations
                 {
                     MuonId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    GhiChu = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    idd = table.Column<int>(type: "int", nullable: false),
                     MaNvCho = table.Column<int>(type: "int", nullable: false),
                     MaNvMuon = table.Column<int>(type: "int", nullable: false),
                     NgayMuon = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    GhiChu = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TrangThai = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -45,34 +34,7 @@ namespace QLCT5.Migrations
                         principalTable: "NhanVien",
                         principalColumn: "IdNhanVien");
                 });
-
-            migrationBuilder.CreateTable(
-                name: "ChiTietMuons",
-                columns: table => new
-                {
-                    ChiTietMuonId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    IdChungTu = table.Column<int>(type: "int", nullable: false),
-                    MuonId = table.Column<int>(type: "int", nullable: false),
-                    SoLuong = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ChiTietMuons", x => x.ChiTietMuonId);
-                    table.ForeignKey(
-                        name: "FK_ChiTietMuons_ChungTu_IdChungTu",
-                        column: x => x.IdChungTu,
-                        principalTable: "ChungTu",
-                        principalColumn: "IdChungTu",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ChiTietMuons_Muons_MuonId",
-                        column: x => x.MuonId,
-                        principalTable: "Muons",
-                        principalColumn: "MuonId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
+          
             migrationBuilder.CreateTable(
                 name: "Tras",
                 columns: table => new
@@ -103,10 +65,33 @@ namespace QLCT5.Migrations
                         principalColumn: "IdNhanVien");
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IX_ChiTietMuons_IdChungTu",
-                table: "ChiTietMuons",
-                column: "IdChungTu");
+            migrationBuilder.CreateTable(
+                name: "ChiTietMuons",
+                columns: table => new
+                {
+                    ChiTietMuonId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    idddddd = table.Column<int>(type: "int", nullable: false),
+                    MuonId = table.Column<int>(type: "int", nullable: false),
+                    IdChungTu = table.Column<int>(type: "int", nullable: false),
+                    SoLuong = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ChiTietMuons", x => x.ChiTietMuonId);
+                    table.ForeignKey(
+                        name: "FK_ChiTietMuons_ChungTu_IdChungTu",
+                        column: x => x.IdChungTu,
+                        principalTable: "ChungTu",
+                        principalColumn: "IdChungTu",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ChiTietMuons_Muons_MuonId",
+                        column: x => x.MuonId,
+                        principalTable: "Muons",
+                        principalColumn: "MuonId",
+                        onDelete: ReferentialAction.Cascade);
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_ChiTietMuons_MuonId",
@@ -131,7 +116,19 @@ namespace QLCT5.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Tras_MaNvTra",
                 table: "Tras",
-                column: "MaNvTra");
+                column: "MaNvTra");            
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "ChiTietMuons");
+
+            migrationBuilder.DropTable(
+                name: "Tras");
+
+            migrationBuilder.DropTable(
+                name: "Muons");           
         }
     }
 }

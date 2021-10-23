@@ -2,14 +2,20 @@
 @model QLCT5.Pages.TrangChungTu.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Thông tin tập CT";
 }
 
-<h1>Thông tin chứng từ</h1>
+<h1>Thông tin tập chứng từ</h1>
 
 <div>
     <hr />
     <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChungTu.IdChungTu)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChungTu.IdChungTu)
+        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ChungTu.TenChungTu)
         </dt>
@@ -39,7 +45,7 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ChungTu.IdDonViNavigation.TenDonVi)
-        </dd>        
+        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ChungTu.IdKepChungTuNavigation)
         </dt>

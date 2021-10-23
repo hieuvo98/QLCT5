@@ -10,8 +10,8 @@ using QLCT5.Models;
 namespace QLCT5.Migrations
 {
     [DbContext(typeof(QLCTtest3Context))]
-    [Migration("20211021005610_v3_addmuontra")]
-    partial class v3_addmuontra
+    [Migration("20211021012844_v0")]
+    partial class v0
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -234,6 +234,9 @@ namespace QLCT5.Migrations
                     b.Property<int?>("SoLuong")
                         .HasColumnType("int");
 
+                    b.Property<int>("idddddd")
+                        .HasColumnType("int");
+
                     b.HasKey("ChiTietMuonId");
 
                     b.HasIndex("IdChungTu");
@@ -392,6 +395,9 @@ namespace QLCT5.Migrations
 
                     b.Property<string>("TrangThai")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("idd")
+                        .HasColumnType("int");
 
                     b.HasKey("MuonId");
 
@@ -561,7 +567,7 @@ namespace QLCT5.Migrations
             modelBuilder.Entity("QLCT5.Models.ChiTietMuon", b =>
                 {
                     b.HasOne("QLCT5.Models.ChungTu", "ChungTu")
-                        .WithMany("ChiTietMuons")
+                        .WithMany()
                         .HasForeignKey("IdChungTu")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -687,11 +693,6 @@ namespace QLCT5.Migrations
             modelBuilder.Entity("QLCT5.Models.ChucDanh", b =>
                 {
                     b.Navigation("NhanViens");
-                });
-
-            modelBuilder.Entity("QLCT5.Models.ChungTu", b =>
-                {
-                    b.Navigation("ChiTietMuons");
                 });
 
             modelBuilder.Entity("QLCT5.Models.DonVi", b =>

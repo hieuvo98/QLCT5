@@ -1,0 +1,43 @@
+﻿@page "/themchitiet/{id:int}"
+@model testmuontra.Pages.TrangMuon.AddChiTietMuonModel
+@{
+    ViewData["Title"] = "Thêm chi tiết mượn";
+}
+
+<partial name="_StatusMessage" />
+
+<h1>Thêm chứng từ cho mượn</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Input.ChungTuId" class="control-label"></label>
+                <input asp-for="Input.ChungTuId" class="form-control" />
+                <span asp-validation-for="Input.ChungTuId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.SoLuong" class="control-label"></label>
+                <input asp-for="Input.SoLuong" class="form-control" />
+                <span asp-validation-for="Input.SoLuong" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaMuon"></label>
+                <input asp-for="MaMuon" class="form-control" disabled />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Thêm" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Details" asp-route-id="@Model.MaMuon">Quay lại</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

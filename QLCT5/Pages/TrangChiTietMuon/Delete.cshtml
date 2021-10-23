@@ -1,0 +1,40 @@
+﻿@page
+@model QLCT5.Pages.TrangChiTietMuon.DeleteModel
+
+@{
+    ViewData["Title"] = "Xóa CT mượn";
+}
+
+<h1>Xóa chứng từ mượn</h1>
+
+<h3>Bạn có chắc chắn xóa chứng từ mượn này?</h3>
+<div>
+    <h4>ChiTietMuon</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChiTietMuon.ChungTu)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChiTietMuon.ChungTu.TenChungTu)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChiTietMuon.SoLuong)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChiTietMuon.SoLuong)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChiTietMuon.Muon)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChiTietMuon.Muon.MuonId)
+        </dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="ChiTietMuon.ChiTietMuonId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./TrangMuon/Details" asp-route-id="@Model.ChiTietMuon.MuonId">Quay lại trang mượn</a>
+    </form>
+</div>

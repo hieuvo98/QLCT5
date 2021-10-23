@@ -1,0 +1,54 @@
+﻿@page
+@model QLCT5.Pages.TrangTra.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Tra[0].NgayTra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tra[0].NhanVienTra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tra[0].NhanVienNhan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tra[0].Muon)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Tra)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayTra)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NhanVienTra.HoTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NhanVienNhan.HoTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Muon.MuonId)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.TraId">Edit</a> 
+                    <a asp-page="./Delete" asp-route-id="@item.TraId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

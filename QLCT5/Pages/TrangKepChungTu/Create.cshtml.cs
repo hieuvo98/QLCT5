@@ -59,11 +59,6 @@ namespace QLCT5.Pages.TrangKepChungTu
                 return Page();
             }
 
-            //_context.KepChungTus.Add(KepChungTu);
-            //await _context.SaveChangesAsync();
-
-            //return RedirectToPage("./Index");
-
             var emptyKepCT = new KepChungTu();
 
             if (await TryUpdateModelAsync<KepChungTu>(

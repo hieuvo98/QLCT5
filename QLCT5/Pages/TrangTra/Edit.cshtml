@@ -1,0 +1,42 @@
+﻿@page
+@model QLCT5.Pages.TrangTra.EditModel
+
+@{
+    ViewData["Title"] = "Sửa thông tin trả";
+}
+
+<h1>Edit</h1>
+
+<h4>Tra</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Tra.TraId" />
+            <div class="form-group">
+                <label asp-for="Tra.TraId"></label>
+                <input asp-for="MaTra" class="form-control" disabled />
+            </div>
+            <div class="form-group">
+                <label asp-for="Tra.NhanVienNhan" class="control-label"></label>
+                <select asp-for="Tra.MaNvNhan" class="form-control" asp-items="ViewBag.TenNhanVienNhan"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tra.NhanVienTra" class="control-label"></label>
+                <select asp-for="Tra.MaNvTra" class="form-control" asp-items="ViewBag.TenNhanVienTra"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

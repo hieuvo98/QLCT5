@@ -1,0 +1,131 @@
+﻿@page "/trangmuon/details/{id:int}"
+@model QLCT5.Pages.TrangMuon.DetailsModel
+
+@{
+    ViewData["Title"] = "Thông tin mượn - trả";
+}
+
+<div>
+    <hr />
+    <h4>Thông tin mượn</h4>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Muon.MuonId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Muon.MuonId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Muon.NgayMuon)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Muon.NgayMuon)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Muon.GhiChu)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Muon.GhiChu)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Muon.NhanVienCho)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Muon.NhanVienCho.HoTen)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Muon.NhanVienMuon)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Muon.NhanVienMuon.HoTen)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Muon.TrangThai)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Muon.TrangThai)
+        </dd>
+    </dl>
+    @if (Model.Muon.TrangThai == "Đã trả")
+    {
+        <h4>Thông tin trả</h4>
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Tra.NgayTra)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Tra.NgayTra)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Tra.NhanVienNhan)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Tra.NhanVienNhan.HoTen)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Tra.NhanVienTra)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Tra.NhanVienTra.HoTen)
+            </dd>
+        </dl>
+        <a class="btn btn-danger btn-sm" asp-page="/TrangTra/Delete" asp-route-id="@Model.Tra.TraId">Hoàn tác trả</a>
+    }
+    else
+    {
+        <a class="btn btn-success btn-sm col-2" asp-page="/TrangTra/Create" asp-route-id="@Model.Muon.MuonId">Trả</a>
+    }
+</div>
+
+<hr />
+
+<h4>Chi tiết mượn</h4>
+<p>
+    <a class="btn btn-success btn-sm" asp-page="AddChiTietMuon" asp-route-id="@Model.Muon.MuonId">+ Thêm chứng từ cho mượn </a>
+</p>
+<table class="table table-sm table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ChiTietMuon[0].IdChungTu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChiTietMuon[0].ChungTu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChiTietMuon[0].ChungTu.IdKepChungTuNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChiTietMuon[0].SoLuong)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Muon.ChiTietMuons)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChungTu.IdChungTu)
+                </td>
+                <td>
+                    <a asp-page="/TrangChungTu/Details" asp-route-id="@item.ChungTu.IdChungTu">@Html.DisplayFor(modelItem => item.ChungTu.TenChungTu)</a>                   
+                </td>
+                <td>
+                    <a asp-page="/TrangKepChungTu/Details" asp-route-id="@item.ChungTu.IdKepChungTu">@Html.DisplayFor(modelItem => item.ChungTu.IdKepChungTuNavigation.TenKepChungTu)</a>                    
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoLuong)
+                </td>
+                <td>
+                    <a class="btn btn-primary btn-sm" asp-page="/TrangChiTietMuon/Edit" asp-route-id="@item.ChiTietMuonId">Sửa</a>
+                    <a class="btn btn-danger btn-sm" asp-page="/TrangChiTietMuon/Delete" asp-route-id="@item.ChiTietMuonId">Xóa</a>
+                </td>
+            </tr>
+        }
+</table>
+
+<div>
+    <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@Model.Muon.MuonId">Chỉnh sửa thông tin mượn</a>
+    <a class="btn btn-primary btn-sm" asp-page="./Index">Quay lại danh sách</a>
+</div>
