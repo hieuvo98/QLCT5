@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using QLCT5.Models
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -28,71 +33,74 @@
         }
     </style>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">QLCT</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item dropdown">
-                            <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" data-toggle="dropdown">
-                                Quản lý chứng từ
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/TrangKepChungTu/Index">Kẹp chứng từ</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="nav-link text-dark" asp-area="" asp-page="/TrangChungTu/Index">Tập chứng từ</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" data-toggle="dropdown">
-                                Quản lý mượn trả
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/TrangMuon/Create">Mượn</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="nav-link text-dark" asp-area="" asp-page="/TrangMuon/Index">Danh sách mượn</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" data-toggle="dropdown">
-                                Quản lý kho, tủ/kệ
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/TrangKho/Index">Kho</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="nav-link text-dark" asp-area="" asp-page="/TrangTuKe/Index">Tủ kệ</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/TrangDonVi/Index">Đơn vị</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" data-toggle="dropdown">
-                                Quản lý nhân viên
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/TrangNhanVien/Index">Nhân viên</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="nav-link text-dark" asp-area="" asp-page="/TrangPhongBan/Index">Phòng ban</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="nav-link text-dark" asp-area="" asp-page="/TrangChucDanh/Index">Chức danh</a>
-                            </div>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-page="/Index">QLCT</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item dropdown">
+                                <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" data-toggle="dropdown">
+                                    Quản lý chứng từ
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/TrangKepChungTu/Index">Kẹp chứng từ</a>
 
-                            <partial name="_AdminMenu" />
-                    </ul>
-                    <partial name="_LoginPartial" />
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/TrangChungTu/Index">Tập chứng từ</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" data-toggle="dropdown">
+                                    Quản lý mượn trả
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/TrangMuon/Create">Mượn</a>
+
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/TrangMuon/Index">Danh sách mượn</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" data-toggle="dropdown">
+                                    Quản lý kho, tủ/kệ
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/TrangKho/Index">Kho</a>
+
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/TrangTuKe/Index">Tủ kệ</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-page="/TrangDonVi/Index">Đơn vị</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" data-toggle="dropdown">
+                                    Quản lý nhân viên
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/TrangNhanVien/Index">Nhân viên</a>
+
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/TrangPhongBan/Index">Phòng ban</a>
+
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/TrangChucDanh/Index">Chức danh</a>
+                                </div>
+
+                                <partial name="_AdminMenu" />
+                        </ul>
+                        <partial name="_LoginPartial" />
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>
+            </nav>
+        </header>
+    }
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

@@ -85,10 +85,12 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.NhanVienMuon.HoTen)
                 </td>
-                <td>
-                    <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.MuonId">Sửa</a>
-                    <a class="btn btn-warning btn-sm" asp-page="./Details" asp-route-id="@item.MuonId">Chi tiết</a>
-                    <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.MuonId">Xóa</a>
+                <td class="td-action">
+                    <div>
+                        <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.MuonId">Sửa</a>
+                        <a class="btn btn-warning btn-sm" asp-page="./Details" asp-route-id="@item.MuonId">Chi tiết</a>
+                        <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.MuonId">Xóa</a>
+                    </div>
                 </td>
             </tr>
         }

@@ -25,10 +25,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.TenPhongBan)
             </td>
-            <td>
-                <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.IdPhongBan">Sửa</a> |
-                <a class="btn btn-warning btn-sm" asp-page="./Details" asp-route-id="@item.IdPhongBan">Xem chi tiết</a> 
-                <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.IdPhongBan">Xóa</a>
+            <td class="td-action">
+                <div>
+                    <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.IdPhongBan">Sửa</a>
+                    <a class="btn btn-warning btn-sm" asp-page="./Details" asp-route-id="@item.IdPhongBan">Xem chi tiết</a>
+                    <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.IdPhongBan">Xóa</a>
+                </div>
             </td>
         </tr>
 }
