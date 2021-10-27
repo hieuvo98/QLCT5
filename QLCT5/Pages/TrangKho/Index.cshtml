@@ -31,10 +31,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DiaChi)
             </td>
-            <td>
-                <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.IdKho">Sửa</a> 
-                <a class="btn btn-warning btn-sm" asp-page="./Details" asp-route-id="@item.IdKho">Xem thông tin</a> 
-                <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.IdKho">Xóa</a>
+            <td class="td-action">
+                <div>
+                    <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.IdKho">Sửa</a>
+                    <a class="btn btn-warning btn-sm" asp-page="./Details" asp-route-id="@item.IdKho">Xem thông tin</a>
+                    <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.IdKho">Xóa</a>
+                </div>
             </td>
         </tr>
 }

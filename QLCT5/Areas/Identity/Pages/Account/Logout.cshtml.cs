@@ -31,14 +31,7 @@ namespace QLCT5.Areas.Identity.Pages.Account
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation("Người dùng đã đăng xuất.");
-            if (returnUrl != null)
-            {
-                return LocalRedirect(returnUrl);
-            }
-            else
-            {
-                return RedirectToPage();
-            }
+            return RedirectToPage("./Login");
         }
     }
 }

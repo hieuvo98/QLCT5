@@ -44,9 +44,11 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Muon.MuonId)
                 </td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.TraId">Edit</a> 
-                    <a asp-page="./Delete" asp-route-id="@item.TraId">Delete</a>
+                <td class="td-action">
+                    <div>
+                        <a asp-page="./Edit" asp-route-id="@item.TraId">Edit</a>
+                        <a asp-page="./Delete" asp-route-id="@item.TraId">Delete</a>
+                    </div>
                 </td>
             </tr>
         }

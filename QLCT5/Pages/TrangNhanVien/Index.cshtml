@@ -8,13 +8,17 @@
 <h1>Danh sách nhân viên</h1>
 
 <form asp-page="./Index" method="get">
-    <div class="form-actions no-color">
-        <p>
+    <div class="form-actions mb-3 no-color">
+        <div>
             Tìm theo tên:
-            <input type="text" name="searchString" value="@Model.CurrentFilter" />
-            <input type="submit" value="Tìm" class="btn btn-primary" /> |
-            <a asp-page="./Index">Quay lại danh sách</a>
-        </p>
+        </div>
+        <div class="input-group col-4 px-0 my-2">
+            <input type="text" name="searchString" value="@Model.CurrentFilter" class="form-control" aria-describedby="button-search">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit" id="button-search">Tìm</button>
+            </div>
+        </div>
+        <a asp-page="./Index">Quay lại danh sách</a>
     </div>
 </form>
 
@@ -55,10 +59,12 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.IdPhongBanNavigation.TenPhongBan)
                 </td>
-                <td>
-                    <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.IdNhanVien">Sửa</a> 
-                    <a class="btn btn-warning btn-sm" asp-page="./Details" asp-route-id="@item.IdNhanVien">Xem chi tiết</a> 
-                    <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.IdNhanVien">Xóa</a>
+                <td class="td-action">
+                    <div>
+                        <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.IdNhanVien">Sửa</a>
+                        <a class="btn btn-warning btn-sm" asp-page="./Details" asp-route-id="@item.IdNhanVien">Xem chi tiết</a>
+                        <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.IdNhanVien">Xóa</a>
+                    </div>
                 </td>
             </tr>
         }

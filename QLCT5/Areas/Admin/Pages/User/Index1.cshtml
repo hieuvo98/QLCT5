@@ -28,8 +28,10 @@
                     <a asp-page="./AddRole" asp-route-id="@user.Id">@user.RolesNames</a>
                 }
             </td>
-            <td>
-                <a class="btn btn-success btn-sm" asp-page="./SetPassword" asp-route-id="@user.Id">Đổi mật khẩu</a>
+            <td class="td-action">
+                <div>
+                    <a class="btn btn-success btn-sm" asp-page="./SetPassword" asp-route-id="@user.Id">Đổi mật khẩu</a>
+                </div>
             </td>
         </tr>
     }

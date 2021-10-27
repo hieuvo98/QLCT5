@@ -32,10 +32,12 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.IdKhoNavigation.TenKho)
                 </td>
-                <td>
-                    <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.IdTuKe">Sửa</a>
-                    <a class="btn btn-warning btn-sm" asp-page="./Details" asp-route-id="@item.IdTuKe">Xem chi tiết</a>
-                    <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.IdTuKe">Xóa</a>
+                <td class="td-action">
+                    <div>
+                        <a class="btn btn-primary btn-sm" asp-page="./Edit" asp-route-id="@item.IdTuKe">Sửa</a>
+                        <a class="btn btn-warning btn-sm" asp-page="./Details" asp-route-id="@item.IdTuKe">Xem chi tiết</a>
+                        <a class="btn btn-danger btn-sm" asp-page="./Delete" asp-route-id="@item.IdTuKe">Xóa</a>
+                    </div>
                 </td>
             </tr>
         }

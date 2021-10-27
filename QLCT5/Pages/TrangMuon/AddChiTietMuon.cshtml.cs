@@ -58,6 +58,7 @@ namespace testmuontra.Pages.TrangMuon
                 return Page();
             }
             Muon = await _context.Muons.FindAsync(id);
+            MaMuon = Muon.MuonId;
 
             ChungTu ct = await _context.ChungTus.FindAsync(Input.ChungTuId);
             if (ct == null)
